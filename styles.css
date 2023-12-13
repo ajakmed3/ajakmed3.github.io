@@ -263,41 +263,16 @@ section {
 }
 
 /* ABOUT SECTION */
-
 #about {
     position: relative;
-}
-
-.text-container {
-    padding: 20px;
-    font-size: 16px;
-    line-height: 1.6;
-    max-width: 800px;
-    margin: auto;
-}
-
-/* For tablets */
-@media (max-width: 768px) {
-    .text-container {
-        font-size: 14px;
-        padding: 15px;
-    }
-}
-
-/* For mobile devices */
-@media (max-width: 480px) {
-    .text-container {
-        font-size: 12px;
-        padding: 10px;
-    }
 }
 
 .about-containers {
     gap: 2rem;
     margin-bottom: 2rem;
     margin-top: 2rem;
+    flex-wrap: wrap; /* Allow the containers to wrap on smaller screens */
 }
-
 
 .about-details-container {
     justify-content: center;
@@ -330,10 +305,7 @@ section {
 }
 
 .details-container:hover {
-    /* Add the styles you want on hover here */
-    /* For example, changing the background color */
     background-color: lightgray;
-    /* Or, add a shadow effect */
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
 }
 
@@ -348,16 +320,52 @@ section {
     margin: auto 0;
 }
 
+/* Media Query for Tablets */
+@media (max-width: 768px) {
+    .section__pic-container {
+        height: 300px;
+        width: 300px;
+    }
+
+    .about-containers {
+        flex-direction: column;
+    }
+
+    .arrow {
+        right: 1rem; /* Adjust position of the arrow */
+    }
+}
+
+/* Media Query for Mobile Phones */
+@media (max-width: 480px) {
+    .section__pic-container {
+        height: 200px;
+        width: 200px;
+    }
+
+    .details-container {
+        padding: 1rem;
+    }
+
+    .arrow {
+        right: 0.5rem;
+        bottom: 1.5rem;
+    }
+}
+
+
 /* EXPERIENCE SECTION */
 
 #experience {
     position: relative;
+    max-width: 1200px; /* Set a maximum width to prevent stretching too far */
+    margin: auto; /* Center the container */
 }
 
 .experience-sub-title {
     color: rgb(85, 85, 85);
     font-weight: 600;
-    font-size: 1.75rem;
+    font-size: 1.75rem; /* You may want to use vw or clamp here for large screens */
     margin-bottom: 2rem;
 }
 
@@ -374,18 +382,39 @@ section {
     flex-direction: row;
     gap: 2.5rem;
     justify-content: space-around;
+    max-width: 1100px; /* Adjust the max-width as necessary */
+    margin: 0 auto; /* Center this container as well */
 }
 
 article {
     display: flex;
-    width: 10rem;
+    flex-basis: calc(100% / 3 - 2.5rem); /* Use flex-basis for flex items */
     justify-content: space-around;
     gap: 0.5rem;
+    max-width: 350px; /* Set a max-width for each article */
 }
 
 article .icon {
     cursor: default;
 }
+
+/* Media Query for High Resolution Screens */
+@media (min-width: 1920px) {
+    .experience-sub-title {
+        font-size: 2rem; /* Adjust font size for readability */
+    }
+
+    .article-container {
+        justify-content: flex-start; /* Adjust alignment if necessary */
+    }
+
+    article {
+        flex-basis: 20%; /* Adjust the flex-basis for large screens */
+        max-width: none; /* You might want to remove max-width on large screens */
+    }
+}
+
+
 
 /* PROJECTS SECTION */
 
